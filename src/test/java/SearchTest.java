@@ -4,8 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
-
 import java.io.File;
+import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class SearchTest {
 
@@ -17,11 +18,12 @@ public class SearchTest {
         driver.get("https://www.google.com/");
         WebElement searchField = driver.findElement(By.cssSelector("input[name='q']"));
         searchField.clear();
-        searchField.sendKeys("selenium java");
+        searchField.sendKeys("selenium webdriver");
         searchField.sendKeys(Keys.RETURN);
         WebElement resultRow = driver.findElement(By.xpath("//div[@class='g']//h3"));
-        System.out.println(resultRow.getText());
-        System.out.println(resultRow.getAttribute("class"));
+        assertTrue(resultRow.isDisplayed(), "Element is not displayed");
+        assertEquals(resultRow.getText(), "WebDriver | Selenium", "Wrong text is displayed");
+        assertEquals(resultRow.getAttribute("class"), "LC20lb MBeuO DKV0Md", "Wrong attribute is displayed");
         driver.quit();
     }
 }
