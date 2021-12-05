@@ -1,3 +1,5 @@
+package tests;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
@@ -8,7 +10,11 @@ import java.io.File;
 
 public abstract class BaseTest {
 
-    protected WebDriver driver;
+    private static WebDriver driver;
+
+    public static WebDriver getDriver() {
+        return driver;
+    }
 
     @BeforeClass
     public void SetUp() {
@@ -25,6 +31,6 @@ public abstract class BaseTest {
 
     @DataProvider(name = "dataProvider")
     public Object[][] dataProviderMethod() {
-        return new Object[][]{{"selenium java"}, {"selenium javascript"}};
+        return new Object[][]{{"selenium"}, {"selenium javascript"}};
     }
 }
