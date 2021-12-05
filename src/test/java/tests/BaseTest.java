@@ -5,12 +5,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import steps.SearchSteps;
 
 import java.io.File;
 
 public abstract class BaseTest {
 
     private static WebDriver driver;
+    SearchSteps steps;
 
     public static WebDriver getDriver() {
         return driver;
@@ -22,6 +24,7 @@ public abstract class BaseTest {
         System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
         driver = new ChromeDriver();
         driver.get("https://www.google.com/");
+        steps = new SearchSteps();
     }
 
     @AfterClass
