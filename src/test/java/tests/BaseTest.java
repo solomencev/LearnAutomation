@@ -6,6 +6,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import steps.SearchSteps;
+import utils.Browser;
+import utils.DriverFactory;
 
 import java.io.File;
 
@@ -20,9 +22,7 @@ public abstract class BaseTest {
 
     @BeforeClass
     public void SetUp() {
-        File file = new File("src/test/resources/chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-        driver = new ChromeDriver();
+        driver = DriverFactory.getDriver(Browser.CHROME);
         driver.get("https://www.google.com/");
         steps = new SearchSteps();
     }
