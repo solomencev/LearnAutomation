@@ -1,28 +1,24 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class SearchPage extends BasePage {
 
-    private By searchField = By.name("q");
+    @FindBy(name = "q")
+    private WebElement searchFiled;
 
     public SearchPage() {
         super();
     }
 
-    public void fillSearchFiled(String text){
-        WebElement searchFieldElement = driver.findElement(searchField);
-        searchFieldElement.clear();
-        searchFieldElement.sendKeys(text);
-
-
+    public void fillSearchFiled(String text) {
+        searchFiled.clear();
+        searchFiled.sendKeys(text);
     }
 
-    public void pressEnter(){
-        WebElement searchFieldElement = driver.findElement(searchField);
-        searchFieldElement.sendKeys(Keys.RETURN);
-
+    public void pressEnter() {
+        searchFiled.sendKeys(Keys.RETURN);
     }
 }
