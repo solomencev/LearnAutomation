@@ -6,9 +6,9 @@ public class SearchSteps {
 
     private SearchPage searchPage = new SearchPage();
 
-    public SearchResultSteps executeSearchByKeyword(String keyword){
+    public SearchResultSteps executeSearchByKeyword(String keyword) throws InterruptedException {
         searchPage.fillSearchFiled(keyword);
-        searchPage.pressEnter();
+        searchPage.clickSearchButtonorPressEnter();
         return new SearchResultSteps();
     }
 }
